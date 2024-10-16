@@ -24,7 +24,7 @@ readonly cwd="${PWD}"
 readonly base='tpm2_'
 readonly root_ca="${base}CA"
 readonly ekc="${base}ekc"
-readonly pubkey_to_certify=${1:-public.ek.portion.pem}
+readonly pubkey_to_certify=${working_dir}public.ek.portion.cer
 readonly manufacturer_ca='tpm.manufacturer.test'
 
 # Utility functions
@@ -123,10 +123,10 @@ readonly pubkey_basename=${pubkey_to_certify%.*}
 
 openssl rsa -pubin \
   -inform DER -in "${pubkey_to_certify}" -text -noout \
-    > "${working_dir}${pubkey_to_certify}.rsa.txt"
+    > "${pubkey_to_certify}.rsa.txt"
 
 openssl asn1parse -i -inform DER -in "${pubkey_to_certify}" \
-  > "${working_dir}${pubkey_to_certify}.asn1.txt"
+  > "${pubkey_to_certify}.asn1.txt"
 
 readonly csr_priv_key_pass="$(pwgen -s 32 1)"
 privout "${ekc}_unused.password" echo "${csr_priv_key_pass}"
