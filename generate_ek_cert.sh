@@ -45,6 +45,8 @@ privall() {
    cd - &> /dev/null
 }
 
+set -x
+
 # Create working dir if passed as parameter (if not, it's current dir)
 
 [ ! -z "${working_dir}" ]       && mkdir -p "${working_dir}"
