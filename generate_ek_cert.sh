@@ -10,8 +10,7 @@ readonly working_dir="${WORKING_DIR:-_${base}_working_dir}/"
 
 readonly h_ek_pub_key='0x81010001'
 readonly h_ek_pub_crt='0x1c00002'
-readonly h_authorization='0x4000000C'
-readonly ek_cert_nvram_attr='0x42072001'
+readonly ek_cert_nvram_attr='authwrite|ownerwrite|authread|ownerread|no_da'
 readonly ek_alg='rsa'
 readonly endorsment_auth='' # set to '-P $PASSWORD' if different from null
 readonly owner_auth='' # set to '-w $PASSWORD' if different from null
